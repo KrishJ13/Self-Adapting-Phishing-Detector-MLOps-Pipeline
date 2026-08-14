@@ -3,10 +3,10 @@
 I have strived to implement this as close to real-life production requirements -->
 
 ## Scope 
-An closed-loop MLOps email filter that classifies **raw email text** and outputs `P(phishing)` with a confidence value. Confident cases are auto-decided (block / allow), while uncertain cases go to a **human review queue** ordered by how useful they would be / **learning entropy** (active learning). Human labels flow back into the database and, once enough accumulate (or drift/a new campaign is detected) the system **automatically triggers a retrain**. The candidate is **gated against hard constraints** (recall, FPR, review budget, latency), **A/B-tested** against the current model, and **promoted or rolled back automatically**. When a **novel campaign** appears — a new *"kind"* of attack the model has never seen — the system detects the degradation, a human labels a small, smartly chosen subset and the model recovers.
+A closed-loop MLOps email filter that classifies **raw email text** and outputs `P(phishing)` with a confidence value. Confident cases are auto-decided (block / allow), while uncertain cases go to a **human review queue** ordered by how useful they would be / **learning entropy** (active learning). Human labels flow back into the database and, once enough accumulate (or drift/a new campaign is detected) the system **automatically triggers a retrain**. The candidate is **gated against hard constraints** (recall, FPR, review budget, latency), **A/B-tested** against the current model, and **promoted or rolled back automatically**. When a **novel campaign** appears — a new *"kind"* of attack the model has never seen — the system detects the degradation, a human labels a small, smartly chosen subset and the model recovers.
 
 ## Context
-Phishing attacks are constantly evolving. A static detection model decays in reality, and manually retraining and building new models is not feasible. Therefore, a system that detects its own degredation, optimises the number of labels needed to re-achieve its detection capabilities and adapt to new attacks, with little human-intervention is very much needed
+Phishing attacks are constantly evolving. A static detection model decays in reality, and manually retraining and building new models is not feasible. Therefore, a system that detects its own degradation, optimises the number of labels needed to re-achieve its detection capabilities and adapt to new attacks, with little human-intervention is very much needed
 
 ## Primary Objective and Metrics
 
@@ -36,7 +36,7 @@ The completed system **SHOULD** also report:
 - **FR-003**: Decision thresholds **MUST** be fitted from evaluation data rather than permanently hardcoded into the classifier.
 - **FR-004**: The system **MUST** provide a subset of low-confidence/uncertain emails to a human `Review Queue`
 - **FR-005**: Reviewer-provided labels **MUST** be stored so that they can later be used for evaluation or retraining.
-- **FR-006**: The system **MUST** prioritise useful training examples using active learning, when more review candidates exist than the availble human-review capacity
+- **FR-006**: The system **MUST** prioritise useful training examples using active learning, when more review candidates exist than the available human-review capacity
 - **FR-007**: The project **MUST** compare active-learning selection with random sampling
 - **FR-008**: The system **MUST** be capable of triggering retraining when at least one of the following occurs:
     1. Enough new human labels have accumulated
@@ -62,10 +62,10 @@ The completed system **SHOULD** also report:
 Perfomance - Speed and responsiveness; Security; Usability; Reliability; Scalability; Portability; Maintainability -->
 - **NFR-001**: The system **MUST** maintain an automatic-blocking false-positive rate of: **FPR ≤ 1% by default** when evaluated on a production-representative dataset
 - **NFR-002**: The system **MUST** keep the human-review rate at: **≤ 5% of inbound emails**
-- **NFR-003**: The system **SHOUKD** acheieve **p95 single-email inference latency < 500 ms**
+- **NFR-003**: The system **SHOULD** achieve **p95 single-email inference latency < 500 ms**
 - **NFR-004**: Important experiment settings and dataset versions **MUST** be recorded so that a previous result can be understood and reproduced
 - **NFR-005**: The system **MUST NOT** have hardcoded values/thresholds/paths/hyperparameters in validated config.
 - **NFR-006**  The system **SHOULD** have structured (JSON) logging with correlation IDs
-- **NFR-0077** The system **SHOULD** have a leakage guard, treating an evaluation Phishing precision score of > 98% as a suspected leak, rather than a viable model
+- **NFR-007** The system **SHOULD** have a leakage guard, treating an evaluation Phishing precision score of > 98% as a suspected leak, rather than a viable model
 
 
