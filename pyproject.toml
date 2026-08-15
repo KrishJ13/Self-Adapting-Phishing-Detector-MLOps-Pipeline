@@ -1,0 +1,21 @@
+# TOML files are configuration files. They are typically used to describe configuration and metadata about packages in a project. 
+
+# There are different tools to install a package. When doing pip install (package), pip needs to know which tool to use. 
+# Got this from packaging documentation
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+# Each [] is called a 'Table'. Everything underneath belonngs to the Table, until a new Table begins
+[project]
+name = "self-adapting-phishing-detector" # This is the distribution name of the project. 
+version = "0.1.0"
+requires-python = ">=3.11,<3.14"
+
+# It is good practice to keep the TOML dependencies in a RANGE, and leave the exact versions in requirements.txt
+dependencies = [
+    "pydantic>=2.7,<3",
+    "pydantic-settings>=2.2,<3",
+    "structlog>=24.1",
+]
+
