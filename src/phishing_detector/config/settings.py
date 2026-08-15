@@ -1,6 +1,7 @@
 from typing import Literal
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from functools import lru_cache # Import from functools
 
 class Settings(BaseSettings):
     """
@@ -19,3 +20,13 @@ class Settings(BaseSettings):
     max_review_rate : float = Field(default=0.05, gt=0.0, le=1.0)
     # The maximum latency - Must be 0 or more
     max_p95_latency_ms: int = Field(gt=0)
+
+"""
+Decorator 'lru_cache' tells Python to run the following function once, and save the result in cache, so that the next
+time the call is repeated (with the same parameters), the cached result is provided, instead of re-running the function
+"""
+# Good practice to use lru_cache for the settings here, because they may be called repeatedly in different modules, but setting won't change during runtime
+@lru_cache
+def import_settings() -> Settings:
+    return Settings()
+
