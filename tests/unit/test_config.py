@@ -30,3 +30,9 @@ def test_out_of_range_FPR_is_rejected(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("PHISHING_MAX_FPR", "2.0")
     with pytest.raises(ValidationError):
         make_settings()
+
+"""
+THIS TEST SHOULD FAIL, TO SEE IF GITHUB ACTIONS IS SET PROPERLY, AND MERGING IS PREVENTED
+"""
+def test_github_actions_failire() -> None:
+    assert 1 == 10
