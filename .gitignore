@@ -6,6 +6,6 @@ __pycache__/
 
 # Ignore the egg-info folder after running as a package, instead of a standalone file
 *.egg-info/
-
+*.cpython
 # Ignore development and local-only .env file
 .env
