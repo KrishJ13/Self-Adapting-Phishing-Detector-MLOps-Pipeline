@@ -9,3 +9,6 @@ __pycache__/
 *.cpython
 # Ignore development and local-only .env file
 .env
+
+# Ignore pytest cache
+.pytest_cache

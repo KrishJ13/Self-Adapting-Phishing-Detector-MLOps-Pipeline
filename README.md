@@ -1,6 +1,9 @@
 # Self-Adapting-Phishing-Detector-MLOps-Pipeline
 Self-adapting phishing detection pipeline using MLOps industry practices, active learning, drift detection, human feedback, automated retraining and gated deployment.
 
+## main Branch Status
+[![Quality Checks](https://github.com/KrishJ13/Self-Adapting-Phishing-Detector-MLOps-Pipeline/actions/workflows/quality-checks.yml/badge.svg?branch=main&event=status)](https://github.com/KrishJ13/Self-Adapting-Phishing-Detector-MLOps-Pipeline/actions/workflows/quality-checks.yml)
+
 ## Problem Statement
 
 A small business operates a custom email system used by its employees for day-to-day communication. As the organisation grows, manually inspecting suspicious emails is no longer practical, so it needs an automated phishing detection service that can analyse the raw content of incoming emails and decide whether each message should be allowed, blocked, or sent to a human reviewer.
