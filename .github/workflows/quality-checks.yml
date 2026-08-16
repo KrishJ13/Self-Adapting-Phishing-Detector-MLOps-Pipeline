@@ -1,0 +1,15 @@
+name: Quality Checks 
+# Run this workflow on every push and pull_request to ensure no breaks
+on: [push, pull_request]
+
+jobs:
+  quality_check: # Name of this task
+    runs-on: ubuntu-latest # called a RUNNER that github uses (can also be mac or windows container)
+    steps:
+      - uses: actions/checkout@v7 # Use existing instruction to pull the repo onto the runner
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - run: pip install -e ".[development]" # Same commad used locally. Install this as a package with development dependencies
+      - run: python -m pytest
+      
