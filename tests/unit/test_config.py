@@ -30,3 +30,4 @@ def test_out_of_range_FPR_is_rejected(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("PHISHING_MAX_FPR", "2.0")
     with pytest.raises(ValidationError):
         make_settings()
+
