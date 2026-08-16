@@ -15,4 +15,7 @@ def main():
     logger.info(msg="Phishing Detector app started")
 
 if __name__ == "__main__":
+    """
+    THIS HARMLESS CHANGES IS TO SEE IF GITHUB ACTIONS HAS BEEN SET PROPERLY. EXPECTED TO PASS
+    """
     main()
