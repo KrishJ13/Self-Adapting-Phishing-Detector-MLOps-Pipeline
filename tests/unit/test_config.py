@@ -34,5 +34,5 @@ def test_out_of_range_FPR_is_rejected(monkeypatch: pytest.MonkeyPatch) -> None:
 """
 THIS TEST SHOULD FAIL, TO SEE IF GITHUB ACTIONS IS SET PROPERLY, AND MERGING IS PREVENTED
 """
-def test_github_actions_failire() -> None:
+def test_github_actions_failure() -> None:
     assert 1 == 10
